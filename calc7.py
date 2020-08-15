@@ -16,9 +16,7 @@ from tkinter import *
 # programar el ingreso del teclado (bind)
 
 # luego del igual, reseteo ingreso
-# resetear resultado cuando ingreso nuevos numeros, que no los agregue al resultado
 # arreglar operaciones acumulativas apretando =
-# arreglar operaciones con float
 
 # estetica GUI
 # poner separacione de miles y millones
@@ -38,7 +36,7 @@ def output_format(num):
 	num = str(num)[:16]
 	num = float(num)
 	# si hay cero/s a la derecha del numero
-	if num-int(num)>0:
+	if abs(num)-int(abs(num))>0:
 		return num	
 	else:
 		return int(num)
@@ -64,10 +62,10 @@ def show(chr):
 
 #*************** BORRAR PANTALLA **************************
 def borrar():
-	global primer_numero, operacion
+	global primer_numero, str_operacion
 	pantalla.set("0")
 	primer_numero = "0"
-	opercaion = ""
+	str_operacion = ""
 
 #*************** OPERACIONES ******************************
 def operacion(simbolo):
@@ -125,7 +123,7 @@ Button(win, text="7", font=fnt, width=3, height=2, command=lambda:show("7")) 	 .
 Button(win, text="8", font=fnt, width=3, height=2, command=lambda:show("8")) 	 .grid(row=1, column=1, sticky=W+E)
 Button(win, text="9", font=fnt, width=3, height=2, command=lambda:show("9")) 	 .grid(row=1, column=2, sticky=W+E)
 Button(win, text="/", font=fnt, width=3, height=2, command=lambda:operacion("/")).grid(row=1, column=3, sticky=W+E)
-Button(win, text="CE", font=fnt, width=3, height=2, command=borrar)   		  	 .grid(row=1, column=4, rowspan=2, sticky=N+S)
+Button(win, text="CE", font=fnt, width=3, height=2, command=borrar)   		  	 .grid(row=1, column=4, rowspan=2, sticky=W+E+N+S)
 
 #*************** FILA 2 ***********************************
 Button(win, text="4", font=fnt, width=3, height=2, command=lambda:show("4"))	 .grid(row=2, column=0, sticky=W+E)
@@ -138,7 +136,7 @@ Button(win, text="1", font=fnt, width=3, height=2, command=lambda:show("1"))  	 
 Button(win, text="2", font=fnt, width=3, height=2, command=lambda:show("2"))  	 .grid(row=3, column=1, sticky=W+E)
 Button(win, text="3", font=fnt, width=3, height=2, command=lambda:show("3"))  	 .grid(row=3, column=2, sticky=W+E)
 Button(win, text="-", font=fnt, width=3, height=2, command=lambda:operacion("-")).grid(row=3, column=3, sticky=W+E)
-Button(win, text="=", font=fnt, width=3, height=2, command=lambda:operacion("=")).grid(row=3, column=4, rowspan=2, sticky=N+S)
+Button(win, text="=", font=fnt, width=3, height=2, command=lambda:operacion("=")).grid(row=3, column=4, rowspan=2, sticky=W+E+N+S)
 
 #*************** FILA 4 ***********************
 Button(win, text="0", font=fnt, width=3, height=2, command=lambda:show("0"))	 .grid(row=4, column=0, columnspan= 2, sticky=W+E)
